@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        header {
+            background-color:black;
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        nav {
+            line-height:30px;
+            background-color:#eeeeee;
+            height:300px;
+            width:100px;
+            float:left;
+            padding:5px;
+        }
+        section {
+            width:350px;
+            float:left;
+            padding:10px;
+        }
+        footer {
+            background-color:black;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>APP评级系统</h1>
+</header>
+
+<nav>
+    <a><input type="button" value="审核"></a><br>
+    <a th:href="@{/person}"><input type="button" value="个人资料"></a><br>
+</nav>
+
+<section>
+    <h1>审核列表</h1>
+    <table border="1">
+        <thead><tr>
+            <th>软件编号</th>
+            <th>APP名字</th>
+            <th>公司</th>
+            <th>审核状况</th>
+        </thead></tr>
+        <tbody>
+        <tr th:each="app,status: ${allapps}">
+            <td th:text="${app.app_id}"></td>
+            <td th:text="${app.app_name}"></td>
+            <td th:text="${app.app_company}"></td>
+            <td th:text="${app.app_status}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<footer>
+    By LeoDarcy 161220002
+</footer>
+
+</body>
+</html>
