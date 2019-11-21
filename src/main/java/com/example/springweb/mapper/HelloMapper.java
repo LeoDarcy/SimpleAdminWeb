@@ -11,11 +11,11 @@ public interface HelloMapper {
     @Results({
             @Result(property = "id", column = "stringId"),
             @Result(property = "name", column = "user_name"),
-            @Result(property = "password",column = "userpsw")
+            @Result(property = "password",column = "user_psw")
     })
     List<HelloUser> findAll();
 
-    @Insert("insert into user(stringId,user_name,password) values(#{id},#{name},#{password})")
+    @Insert("insert into user(stringId,user_name,user_psw) values(#{id},#{name},#{password})")
     void insert(HelloUser helloUser);
 
 
@@ -23,11 +23,11 @@ public interface HelloMapper {
     @Results({
             @Result(property = "id",column = "stringId"),
             @Result(property = "name",column = "user_name"),
-            @Result(property = "password",column = "userpsw")
+            @Result(property = "password",column = "user_psw")
     })
     HelloUser getOne(String id);
 
-    @Update("update user set user_name = #{name}, password = #{password} where StringId = #{id}")
+    @Update("update user set user_name = #{name}, user_psw = #{password} where StringId = #{id}")
     void updateByID(HelloUser helloUser);//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 
     @Delete("delete from user where StringId = #{id}")

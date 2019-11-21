@@ -12,12 +12,16 @@ public interface AppMapper {
             @Result(property = "id", column = "app_id"),
             @Result(property = "name", column = "app_name"),
             @Result(property = "company",column = "app_company"),
-            @Result(property = "status",column = "app_status")
+            @Result(property = "status",column = "app_status"),
+            @Result(property = "level",column = "app_level"),
+            @Result(property = "kinds",column = "app_kinds"),
+            @Result(property = "items",column = "app_items"),
+            @Result(property = "comment",column = "app_comment")
     })
     List<AppStruct> findAll();
 
-    @Insert("insert into apps(app_id,app_name,app_company,app_status) values(#{id},#{name},#{company},#{status})")
-    void insert(AppStruct helloUser);
+    @Insert("insert into apps(app_id,app_name,app_company,app_status,app_kinds,app_level,app_items,app_comment) values(#{id},#{name},#{company},#{status},#{kinds},#{level},#{items},#{comment})")
+    void insert(AppStruct helloapp);
 
 
     @Select("select * from apps where app_id = #{id}")
@@ -25,11 +29,15 @@ public interface AppMapper {
             @Result(property = "id",column = "app_id"),
             @Result(property = "name",column = "app_name"),
             @Result(property = "company",column = "app_company"),
-            @Result(property = "status",column = "app_status")
+            @Result(property = "status",column = "app_status"),
+            @Result(property = "level",column = "app_level"),
+            @Result(property = "kinds",column = "app_kinds"),
+            @Result(property = "items",column = "app_items"),
+            @Result(property = "comment",column = "app_comment")
     })
     AppStruct getOne(String id);
 
-    @Update("update apps set app_name = #{name}, app_company = #{company}, app_status = #{status} where app_id = #{id}")
+    @Update("update apps set app_name = #{name}, app_company = #{company}, app_status = #{status},app_level=#{level},app_items=#{items},app_kinds=#{kinds},app_comment=#{comment} where app_id = #{id}")
     void updateByID(AppStruct app);//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 
     @Delete("delete from apps where app_id = #{id}")
@@ -37,5 +45,12 @@ public interface AppMapper {
 
     //更新状态
     @Update("update apps set app_status = #{sta} where app_id = #{id}")
-    void updateStatusByID(@Param("id")String id, @Param("sta") int status);
+    void updateStatusByID(@Param("id")String id, @Param("sta") String status);
+
+    @Update("update apps set app_comment = #{sta} where app_id = #{id}")
+    void updateCommentByID(@Param("id")String id, @Param("sta") String comments);
+
+    @Update("update apps set app_level = #{sta} where app_id = #{id}")
+    void updateLevelByID(@Param("id")String id, @Param("sta") String comments);
 }
+

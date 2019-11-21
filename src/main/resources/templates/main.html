@@ -35,28 +35,31 @@
 
 <header>
     <h1>APP评级系统</h1>
+    <p th:text="${test}">(greeting)</p>
 </header>
 
 <nav>
-    <a><input type="button" value="审核"></a><br>
+    <a><input type="button" value="审核列表"></a><br>
     <a th:href="@{/person}"><input type="button" value="个人资料"></a><br>
 </nav>
 
 <section>
     <h1>审核列表</h1>
-    <table border="1">
+    <table border width=600 height=100>
         <thead><tr>
             <th>软件编号</th>
             <th>APP名字</th>
             <th>公司</th>
             <th>审核状况</th>
+            <th>操作</th>
         </thead></tr>
         <tbody>
-        <tr th:each="app,status: ${allapps}">
-            <td th:text="${app.app_id}"></td>
-            <td th:text="${app.app_name}"></td>
-            <td th:text="${app.app_company}"></td>
-            <td th:text="${app.app_status}"></td>
+        <tr th:each="app,status: ${apps}">
+            <td th:text="${app.id}"></td>
+            <td th:text="${app.name}"></td>
+            <td th:text="${app.company}"></td>
+            <td th:text="${app.status}"></td>
+            <td><a th:href="@{/checkApp(id=${app.id})}">查看</a></td>
         </tr>
         </tbody>
     </table>

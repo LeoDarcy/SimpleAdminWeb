@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.jws.WebParam;
@@ -19,11 +20,12 @@ public class AllAppController {
     private int showLines = 10;
     @Autowired
     AppService appsService;
-    @RequestMapping("/main")
+    @RequestMapping(value = "/main")
     public String firstImpression(Model model) {
-
+        System.out.println("Go IN!!!");
         List<AppStruct> apps = appsService.getAppsList();
-        model.addAttribute("allapps", apps);
+        model.addAttribute("apps", apps);
+        model.addAttribute("test", "In All APP Controller");
         return "main";
     }
     @RequestMapping("/main/nextPage")

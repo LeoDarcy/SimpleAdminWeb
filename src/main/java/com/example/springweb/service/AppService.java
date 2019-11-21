@@ -35,7 +35,8 @@ public class AppService {
         System.out.println("getOne:"+result);
         if (result==null)
         {
-            result=new AppStruct();//索引为空的时候，返回null，需要这时候对其getId,getName就会出错。
+            result=null;//索引为空的时候，返回null，需要这时候对其getId,getName就会出错。
+            return result;
         }
         System.out.println(result.toString());
         return result;
@@ -67,8 +68,16 @@ public class AppService {
         System.out.println("AfterDelete:"+appMapper.getOne(id));
     }
 
-    public void UpdateStatusByID(String id, int status){
+    public void UpdateStatusByID(String id, String status){
         appMapper.updateStatusByID(id, status);
+        System.out.println("After Update:" + appMapper.getOne(id));
+    }
+    public void UpdateLevelByID(String id, String level){
+        appMapper.updateLevelByID(id, level);
+        System.out.println("After Update:" + appMapper.getOne(id));
+    }
+    public void UpdateCommentByID(String id, String comment){
+        appMapper.updateCommentByID(id, comment);
         System.out.println("After Update:" + appMapper.getOne(id));
     }
     //返回一定范围内的列表
