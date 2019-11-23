@@ -1,17 +1,13 @@
 package com.example.springweb.controller;
 
 import com.example.springweb.dao.AppStruct;
-import com.example.springweb.dao.HelloUser;
 import com.example.springweb.service.AppService;
-import com.example.springweb.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.jws.WebParam;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -21,13 +17,16 @@ public class AllAppController {
     @Autowired
     AppService appsService;
     @RequestMapping(value = "/main")
-    public String firstImpression(Model model) {
+    public String firstImpression(Model model, HttpSession session) {
+        if(session.getAttribute("LoginUserId") == null)
+            return "/login";
         System.out.println("Go IN!!!");
         List<AppStruct> apps = appsService.getAppsList();
         model.addAttribute("apps", apps);
         model.addAttribute("test", "In All APP Controller");
         return "main";
     }
+    /*
     @RequestMapping("/main/nextPage")
     public String nextPage(Model model){
         List<AppStruct> apps = appsService.getAppsListByIndex(page*showLines, (page+1)*showLines);
@@ -46,4 +45,5 @@ public class AllAppController {
         model.addAttribute("allapps", apps);
         return "main";
     }
+    */
 }

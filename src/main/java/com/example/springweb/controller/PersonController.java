@@ -25,10 +25,15 @@ public class PersonController {
         model.addAttribute("id", identity.getId());
         model.addAttribute("name", identity.getName());
         model.addAttribute("password", identity.getPassword());
-        return "personpage";
+        //return "personpage";
+        return "person";
     }
     @RequestMapping("/updateperson")
-    public String updatePerson(@RequestParam(value = "usrname", required = false) String username, @RequestParam(value="psw", required = false)String password, HttpSession session, Model model){
+    public String updatePerson(@RequestParam(value = "usrname", required = false) String username,
+                               @RequestParam(value="psw", required = false)String password, HttpSession session,
+                               Model model){
+        if(session.getAttribute("LoginUserId") == null)
+            return "/login";
         Map<String, String> mp = new HashMap<>();
         String id = (String)session.getAttribute("LoginUserId");
         HelloUser usr = userService.getOne(id);

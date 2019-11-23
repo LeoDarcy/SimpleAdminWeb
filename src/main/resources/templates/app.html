@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Main Page</title>
+    <title>Check APP</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -62,32 +62,31 @@
                 <li><a href="#">待审核项目</a></li>
                 <li><a href="/person">个人资料</a></li>
             </ul>
-            </div>
+        </div>
         <div class="col-md-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header"></h1>
-            <h1 class="page-header">全部项目</h1>
+            <h1 class="page-header">审核</h1>
             <div class="row placeholders">
             </div>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead><tr>
-                        <th>软件编号</th>
-                        <th>APP名字</th>
-                        <th>公司</th>
-                        <th>审核状况</th>
-                        <th>操作</th>
-                    </thead></tr>
-                    <tbody>
-                    <tr th:each="app,status: ${apps}">
-                        <td th:text="${app.id}"></td>
-                        <td th:text="${app.name}"></td>
-                        <td th:text="${app.company}"></td>
-                        <td th:text="${app.status}"></td>
-                        <td><a th:href="@{/checkApp(id=${app.id})}">查看</a></td>
-                    </tr>
-                    </tbody>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">App信息</h3>
+                </div>
+                <table class="table">
+                    <tr><td>ID: </td><td th:text="${app.id}"></td></tr>
+                    <tr><td>名称: </td><td th:text="${app.name}"></td></tr>
+                    <tr><td>公司名: </td><td th:text="${app.company}"></td></tr>
+                    <tr><td>分类: </td><td th:text="${app.kinds}"></td></tr>
+                    <tr><td>测评指标1: </td><td th:text="${app.items}"></td></tr>
+                    <tr><td>测评指标2: </td><td th:text="${app.items1}"></td></tr>
+                    <tr><td>状态: </td><td th:text="${app.status}"></td></tr>
+                    <tr><td>名称是否合法: </td><td th:text="${app.namelegel}"></td></tr>
+                    <tr><td>分类是否正确: </td><td th:text="${app.kindcorrect}"></td></tr>
+                    <tr><td>评级结果: </td><td th:text="${app.level}"></td></tr>
+                    <tr><td>审核意见: </td><td th:text="${app.comment}"></td></tr>
                 </table>
             </div>
+
         </div>
     </div>
 </div>

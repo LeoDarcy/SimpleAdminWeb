@@ -37,6 +37,7 @@ public class HelloService {
         if (result==null)
         {
             result=new HelloUser();//索引为空的时候，返回null，需要这时候对其getId,getName就会出错。
+            return null;
         }
         System.out.println(result.toString());
         return result;

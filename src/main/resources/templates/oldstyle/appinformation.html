@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        header {
+            background-color:black;
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        nav {
+            line-height:30px;
+            background-color:#eeeeee;
+            height:300px;
+            width:100px;
+            float:left;
+            padding:5px;
+        }
+        section {
+            width:350px;
+            float:left;
+            padding:10px;
+        }
+        footer {
+            background-color:black;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>APP评级系统</h1>
+    <p th:text="${test}">(greeting)</p>
+</header>
+
+<nav>
+    <a><input type="button" value="审核列表"></a><br>
+    <a th:href="@{/person}"><input type="button" value="个人资料"></a><br>
+</nav>
+
+<section>
+    <h1>查看的对象</h1>
+    <br>
+    <p>APP 的ID: <a th:text="${app.id}"></a></p>
+    <p>APP 的名称: <a th:text="${app.name}"></a></p>
+    <p>公司名: <a th:text="${app.company}"></a></p>
+    <p>分类: <a th:text="${app.kinds}"></a></p>
+    <p>测评指标: <a th:text="${app.items}"></a></p>
+    <p>状态: <a th:text="${app.status}"></a></p>
+
+    <br>
+    <h1>审批意见</h1>
+    <form action="/assess" method="post">
+        名称是否合法：<select name="namelegel">
+            <option value="legel">合法</option>
+            <option value="illegel">不合法</option>
+                    </select>
+        分类是否正确：<select name="kindcorrect">
+            <option value="correct">合法</option>
+            <option value="incorrect">不合法</option>
+                    </select>
+        评级解果：<select name="level">
+            <option value="1">一级</option>
+            <option value="2">二级</option>
+            <option value="3">三级</option>
+            <option value="4">四级</option>
+            <option value="5">五级</option>
+                </select>
+        审核意见<textarea name="comment" rows="10" cols="30"></textarea>
+        <br><br>
+        <input type="submit" value="提交审核结果">
+    </form>
+</section>
+
+<footer>
+    By LeoDarcy 161220002
+</footer>
+
+</html>

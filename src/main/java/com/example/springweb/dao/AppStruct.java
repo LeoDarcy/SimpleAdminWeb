@@ -11,11 +11,15 @@ public class AppStruct implements Serializable {
     private String kinds;//分类条目
     private String level;//类别
     private String items;//测评方向
+    private String items1;//测评方向1
+    private String namelegel;//名称合法
+    private String kindcorrect;//分类正确
     private String comment;//评论
     public AppStruct(){
         id = null;name = null;company = null;
         status = null;kinds=null;level=null;
-        items=null;comment=null;
+        items=null;comment=null;items1=null;
+        namelegel=null;kindcorrect=null;
     }
     public AppStruct(Map<String, String> mp){
         if(mp.containsKey("id"))
@@ -34,6 +38,12 @@ public class AppStruct implements Serializable {
             this.status = mp.get("items");
         if(mp.containsKey("comments"))
             this.status = mp.get("comments");
+        if(mp.containsKey("items1"))
+            this.status = mp.get("items1");
+        if(mp.containsKey("namelegel"))
+            this.status = mp.get("namelegel");
+        if(mp.containsKey("kindcorrect"))
+            this.status = mp.get("kinecorrect");
     }
 
     public String getId() {
@@ -70,8 +80,18 @@ public class AppStruct implements Serializable {
     public void setLevel(String le){level=le;}
     public String getItems(){return items;}
     public void setItems(String it){items=it;}
+
     public String getComment(){return comment;}
     public void setComment(String co){comment=co;}
+
+    public String getItems1(){return items1;}
+    public void setItems1(String co){items1=co;}
+
+    public String getNamelegel(){return namelegel;}
+    public void setNamelegel(String co){namelegel=co;}
+
+    public String getKindcorrect(){return kindcorrect;}
+    public void setKindcorrect(String co){kindcorrect=co;}
     @Override
     public String toString() {
         return id + "," + name + "," + company + ", now status is " + status;

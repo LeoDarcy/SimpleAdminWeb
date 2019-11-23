@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Main Page</title>
+    <title>Person Information</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -58,37 +58,43 @@
             <ul class="nav nav-sidebar">
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
-                <li class="active"><a href="/main">全部项目 <span class="sr-only">(current)</span></a></li>
+                <li><a href="/main">全部项目 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">待审核项目</a></li>
-                <li><a href="/person">个人资料</a></li>
+                <li class="active"><a href="/person">个人资料</a></li>
             </ul>
-            </div>
+        </div>
         <div class="col-md-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header"></h1>
-            <h1 class="page-header">全部项目</h1>
-            <div class="row placeholders">
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead><tr>
-                        <th>软件编号</th>
-                        <th>APP名字</th>
-                        <th>公司</th>
-                        <th>审核状况</th>
-                        <th>操作</th>
-                    </thead></tr>
-                    <tbody>
-                    <tr th:each="app,status: ${apps}">
-                        <td th:text="${app.id}"></td>
-                        <td th:text="${app.name}"></td>
-                        <td th:text="${app.company}"></td>
-                        <td th:text="${app.status}"></td>
-                        <td><a th:href="@{/checkApp(id=${app.id})}">查看</a></td>
-                    </tr>
-                    </tbody>
+            <h1 class="page-header">个人信息</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">原先信息</h3>
+                </div>
+                <table class="table">
+                    <tr><td>当前账户名：</td><td th:text="${id}"></td></tr>
+                    <tr><td>当前用户名 ：</td><td th:text="${name}"></td></tr>
+                    <tr><td>当前密码 ：</td><td th:text="${password}"></td></tr>
                 </table>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">更新</h3>
+                </div>
+                <div class="panel-body">
+
+                <form class="form-group" action="/updateperson">
+
+                    <label for="inputName" >用户名</label>
+                    <input type="text" id="inputName" class="form-group-sm" placeholder="用户名" name="usrname" required autofocus>
+                    <br>
+                    <label for="inputPassword" >Password</label>
+                    <input type="password" id="inputPassword" class="form-group-sm" name="psw" placeholder="密码" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">提交更新</button>
+                </form>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 

@@ -80,6 +80,14 @@ public class AppService {
         appMapper.updateCommentByID(id, comment);
         System.out.println("After Update:" + appMapper.getOne(id));
     }
+    public void UpdateNamelegelByID(String id, String comment){
+        appMapper.updateNamelegelByID(id, comment);
+        System.out.println("After Update:" + appMapper.getOne(id));
+    }
+    public void UpdateKindCorrectByID(String id, String comment){
+        appMapper.updateKindcorrectByID(id, comment);
+        System.out.println("After Update:" + appMapper.getOne(id));
+    }
     //返回一定范围内的列表
     public List<AppStruct> getAppsListByIndex(int begin, int end){
         List<AppStruct> all = getAppsList();

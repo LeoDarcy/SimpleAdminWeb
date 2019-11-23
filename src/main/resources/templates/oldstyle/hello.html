@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>hello world html</p>
+<p class="lead" th:text="${greeting}">(greeting)</p>
+<table border="1">
+    <thead><tr>
+        <th>id</th>
+        <th>APP名字</th>
+        <th>公司</th>
+        <th>审核状况</th>
+    </thead></tr>
+    <tbody>
+        <tr th:each="app,status: ${apps}">
+            <td th:text="${status.index}"></td>
+            <td th:text="${app.id}"></td>
+            <td th:text="${app.name}"></td>
+            <td th:text="${app.password}"></td>
+        </tr>
+    </tbody>
+    <form name="" action="/login" method="post">
+        用户名:<br>
+        <input type="text" name="usrid">
+        <br>
+        密码:<br>
+        <input type="password" name="psw">
+        <br><br>
+        <input type="submit" value="登陆">
+    </form>
+
+</table>
+</body>
+</html>

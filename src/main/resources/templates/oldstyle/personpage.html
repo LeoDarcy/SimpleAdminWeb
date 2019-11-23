@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        header {
+            background-color:black;
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        nav {
+            line-height:30px;
+            background-color:#eeeeee;
+            height:300px;
+            width:100px;
+            float:left;
+            padding:5px;
+        }
+        section {
+            width:350px;
+            float:left;
+            padding:10px;
+        }
+        footer {
+            background-color:black;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>APP评级系统</h1>
+    <p th:text="${test}">(greeting)</p>
+</header>
+
+<nav>
+    <a><input type="button" value="审核列表"></a><br>
+    <a th:href="@{/person}"><input type="button" value="个人资料"></a><br>
+</nav>
+
+<section>
+    <h1>目前个人信息</h1>
+    当前账户名 ：<p th:text="${id}"></p>
+    当前用户名 ：<p th:text="${name}"></p>
+    当前密码 ：<p th:text="${password}"></p>
+    <h1>可更新</h1>
+    <form name="" action="/updateperson" method="post">
+        更新用户名:<br>
+        <input type="text" name="usrname" >
+        <br>
+        更新密码:<br>
+        <input type="text" name="psw">
+        <br><br>
+        <input type="submit" value="更新">
+    </form>
+
+</section>
+
+<footer>
+    By LeoDarcy 161220002
+</footer>
+
+</body>
+</html>
